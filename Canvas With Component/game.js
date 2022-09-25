@@ -1,5 +1,6 @@
 
 //allen
+//Delacruz
 
 
 	// c = canvas and get canvas attributes
