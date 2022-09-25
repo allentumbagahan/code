@@ -15,6 +15,7 @@ function showCoord(event) {
 		console.log("mouseX : " + Math.floor(x));
 		console.log("mouseY : " + Math.floor(y));
 		c.scrollRight
+		player.moveOn(x, y); //move player to clicked position 
 		//onclick in canvas
 			//define what box clicked by mouse
 				
@@ -114,10 +115,14 @@ class Player {
 		 console.log(player)
 		
 	}
-	moveOn() {
+	moveOn(x, y) {
+	  if (x == null && y == null) {
 		this.targetPlaceX = Math.floor(Math.random () * (c.width - 50) + 50)
 		this.targetPlaceY = Math.floor(Math.random () * (c.height - 50) + 50)
-		
+	  }else {
+	    this.targetPlaceX = x
+	    this.targetPlaceY = y
+	  }
 
 		// check if target is visible factor for speed
 		console.log(this.targetPlaceX)
@@ -128,7 +133,7 @@ class Player {
 	
 }
 
-const player = new Player(0, 50, 50, 50, 156) // make a player with component properties
+const player = new Player(0, 50, 50, 50, 8) // make a player with component properties
 console.log(player)
 player.draw() // try to draw a player
 
