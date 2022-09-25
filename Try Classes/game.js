@@ -7,6 +7,7 @@ class Person {
   }
   
   Try (data, index) { 
+    /*data is the value of array and index is the position number*/
    
     people[index].posX += 1
     people[index].posY += 1
