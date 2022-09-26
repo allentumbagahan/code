@@ -16,6 +16,7 @@ function showCoord(event) {
 		console.log("mouseY : " + Math.floor(y));
 		c.scrollRight
 		player.moveOn(x, y); //move player to clicked position 
+		
 		//onclick in canvas
 			//define what box clicked by mouse
 				
