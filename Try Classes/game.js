@@ -1,4 +1,4 @@
-c = document.getElementById('canvas')
+  c = document.getElementById('canvas')
 ctx = c.getContext('2d')
 
 mapWidth = document.body.offsetWidth
@@ -8,9 +8,10 @@ c.width = mapWidth
 c.height = mapHeight
 
 let people = []
+let foods = []
 
 class person {
-  constructor(x, y, sizeX, sizeY){
+  constructor(x, y, sizeX, sizeY, energy, speed){
     this.posX = x
     this.posY = y
     this.sizeX = sizeX
@@ -19,7 +20,9 @@ class person {
     this.targetPlaceY = y
     this.action = 0
     this.ActionStatus = "idle" //idle, move
-    
+    this.energy = (80 - (energy * 5))
+    this.speed = speed
+    this.hunger = 100
     
     
   }
@@ -32,7 +35,7 @@ class person {
     ctx.rect(this.posX, this.posY, this.sizeX, this.sizeY)
     ctx.stroke()
     
-    if (this.updateStatus == "move"){
+    if (this.ActionStatus == "move"){
       ctx.fillStyle = "red"
       ctx.fill()
       
@@ -42,18 +45,30 @@ class person {
       this.idleORmove()
       
     }
-    
-    
+    //draw hunger bar
+    ctx.beginPath()
+    ctx.rect(this.posX - 5, this.posY - 10, this.sizeX + 10, 2)
+    ctx.fillStyle = "black"
+    ctx.stroke()
+    ctx.beginPath()
+    ctx.rect(this.posX - 5, this.posY - 10, (this.sizeX + 10) * (this.hunger/100), 2)
+    if (this.hunger < 90) {
+    ctx.fillStyle = "red"
+    }else {
+      ctx.fillStyle = "green"
+    }
+    ctx.stroke()
+    ctx.fill()
     
     
   }
   findPlace() {
     
     if (this.ActionStatus == "idle") {
-    if (this.action = 3)
+    if (this.action == 1) {
       this.targetPlaceX = (Math.floor(Math.random()*c.width - 25) + 25)
       this.targetPlaceY = (Math.floor(Math.random()*c.height - 25) + 25)
-      
+    }
       }
       console.log(this.ActionStatus)
       console.log(this.targetPlaceY)
@@ -92,19 +107,39 @@ class person {
     }
   }
   idleORmove() {
-    if (this.action != 3) {
+    if (this.action != 1) {
     if (this.ActionStatus == "idle") {
-      this.action = Math.random()*20
+      this.action = Math.floor(Math.random()*this.energy)
+      console.log("action : " + this.action)
       }
     }
   }
-  
+  hunger() {
+    if (this.hunger < 80){
+      //find food
+      
+    }
+    
+  }
     
   
   
  
-}
+}//end of class person
 
+class food {
+  constructor(x, y) {
+    this.x  = x
+    this.y = y
+  }
+  draw() {
+    ctx.beginPath()
+    ctx.arc(this.x, this.y, 4, 0, 2*Math.PI)
+    ctx.stroke()
+    ctx.fillStyle = "green"
+    ctx.fill()
+  }
+}
 
 
 
@@ -118,11 +153,15 @@ function animate () {
     person.idleORmove()
     person.updateStatus()
     person.move()
+    console.log("posX" + person.posX)
+    person.hunger -= 0.01
     
     
     
   })
-  
+  foods.forEach((food) => {
+    food.draw()
+  })
 console.log(people);
  
 
@@ -138,8 +177,17 @@ function clickPosition(event) {
   console.log(clickX);
   console.log(clickY)
   
-  people.push(new person(clickX, clickY, c.width * 0.05, c.width * 0.05));
+  people.push(new person(clickX, clickY, c.width * 0.05, c.width * 0.05, 5, 5));
   
   console.log(people)
 }
-  
+
+setInterval((addFood => {
+  foods.push(new food((Math.floor(Math.random()*c.width - 25) + 25), (Math.floor(Math.random()*c.width - 25) + 25)))
+  console.log(foods)
+}), 5000)
+
+function NearFood(value, index, array) {
+  return (c.width / 2) > value
+}
+
