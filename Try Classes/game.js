@@ -23,6 +23,7 @@ class person {
     this.energy = (80 - (energy * 5))
     this.speed = speed
     this.hunger = 100
+    this.targetfood = 0
     
     
   }
@@ -52,7 +53,7 @@ class person {
     ctx.stroke()
     ctx.beginPath()
     ctx.rect(this.posX - 5, this.posY - 10, (this.sizeX + 10) * (this.hunger/100), 2)
-    if (this.hunger < 90) {
+    if (this.hunger < 60) {
     ctx.fillStyle = "red"
     }else {
       ctx.fillStyle = "green"
@@ -99,7 +100,7 @@ class person {
   updateStatus() {
     if(this.posX == this.targetPlaceX && this.posY == this.targetPlaceY) {
       this.ActionStatus =  "idle"
-      this.action = 0
+      this.action = -1
      
     }else {
       this.ActionStatus = "move"
@@ -114,12 +115,26 @@ class person {
       }
     }
   }
-  hunger() {
-    if (this.hunger < 80){
+  
+  hungerUpdate() {
+    if (this.hunger < 70){
       //find food
-      
+      if (this.targetfood == -1) {
+     this.targetfood = (Math.floor((Math.random() * foods.length )))
+     this.targetPlaceX = foods[this.targetfood].x
+     this.targetPlaceY = foods[this.targetfood].y
+     console.log(foods.length + "here")
+     
+      }
     }
     
+  }
+  
+  die(){
+    if (this.hunger <= 0){
+      people = people.slice(index - 1)
+      console.log("index" + index)
+    }
   }
     
   
@@ -147,21 +162,27 @@ class food {
 function animate () {
   ctx.clearRect(0, 0, c.width, c.height)
   requestAnimationFrame(animate)
-  people.forEach((person) => {
+  foods.forEach((food) => {
+    food.draw()
+  })
+  people.forEach((person, index) => {
     person.draw()
     person.findPlace()
     person.idleORmove()
     person.updateStatus()
     person.move()
+    person.hungerUpdate()
     console.log("posX" + person.posX)
-    person.hunger -= 0.01
+    person.hunger -= 0.1
+    if (person.hunger <= 0){
+    delete people[index]
+    }
     
+      
     
     
   })
-  foods.forEach((food) => {
-    food.draw()
-  })
+  
 console.log(people);
  
 
@@ -191,3 +212,4 @@ function NearFood(value, index, array) {
   return (c.width / 2) > value
 }
 
+ 
