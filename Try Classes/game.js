@@ -71,8 +71,7 @@ class person {
       this.targetPlaceY = (Math.floor(Math.random()*c.height - 25) + 25)
     }
       }
-      console.log(this.ActionStatus)
-      console.log(this.targetPlaceY)
+      
     }
     
   move () {
@@ -101,6 +100,7 @@ class person {
     if(this.posX == this.targetPlaceX && this.posY == this.targetPlaceY) {
       this.ActionStatus =  "idle"
       this.action = -1
+      this.targetfood = -1
      
     }else {
       this.ActionStatus = "move"
@@ -111,7 +111,7 @@ class person {
     if (this.action != 1) {
     if (this.ActionStatus == "idle") {
       this.action = Math.floor(Math.random()*this.energy)
-      console.log("action : " + this.action)
+      
       }
     }
   }
@@ -121,9 +121,9 @@ class person {
       //find food
       if (this.targetfood == -1) {
      this.targetfood = (Math.floor((Math.random() * foods.length )))
-     this.targetPlaceX = foods[this.targetfood].x
-     this.targetPlaceY = foods[this.targetfood].y
-     console.log(foods.length + "here")
+     this.targetPlaceX = (foods[this.targetfood].x - (this.sizeX/2))
+     this.targetPlaceY = (foods[this.targetfood].y - (this.sizeY/2))
+     
      
       }
     }
@@ -133,7 +133,7 @@ class person {
   die(){
     if (this.hunger <= 0){
       people = people.slice(index - 1)
-      console.log("index" + index)
+      
     }
   }
     
@@ -172,7 +172,7 @@ function animate () {
     person.updateStatus()
     person.move()
     person.hungerUpdate()
-    console.log("posX" + person.posX)
+   
     person.hunger -= 0.1
     if (person.hunger <= 0){
     delete people[index]
@@ -183,7 +183,7 @@ function animate () {
     
   })
   
-console.log(people);
+
  
 
 
@@ -195,17 +195,16 @@ animate()
 function clickPosition(event) {
   var clickX = Math.abs(event.clientX)
   var clickY = Math.abs(event.clientY)
-  console.log(clickX);
-  console.log(clickY)
+  
   
   people.push(new person(clickX, clickY, c.width * 0.05, c.width * 0.05, 5, 5));
   
-  console.log(people)
+  
 }
 
 setInterval((addFood => {
-  foods.push(new food((Math.floor(Math.random()*c.width - 25) + 25), (Math.floor(Math.random()*c.width - 25) + 25)))
-  console.log(foods)
+  foods.push(new food((Math.floor(Math.random()* (c.width - 50)) + 50), (Math.floor(Math.random()*(c.width - 50)) + 50)))
+  
 }), 5000)
 
 function NearFood(value, index, array) {
