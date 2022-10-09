@@ -3,7 +3,7 @@ class food {
     this.x  = x
     this.y = y
     this.status = "still" //still or gone
-    this.image = new Image()
+    
     
   }
   draw() {
@@ -13,10 +13,6 @@ class food {
     ctx1.stroke()
     ctx1.fillStyle = "green"
     ctx1.fill()
-    image1.document.createElement('img')
-    image1.setAttribute('src', './src/img/images.png')
-    c.appendChild(image1)
-    ctx1.drawImage(imageSrc, this.x, this.y, 50, 50)
     } else{
       
     }

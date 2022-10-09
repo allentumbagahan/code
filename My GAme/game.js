@@ -36,3 +36,5 @@ const player = new Player(50, 50, 'red', 50, 50)
 
 console.log(player)
 player.draw()
+
+
