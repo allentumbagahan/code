@@ -1,7 +1,13 @@
 c = document.querySelector('canvas')
 console.log('start')
 var x = 10;
+var y = 10;
+var h = "world!"
+var grave = `hello ${h}`
 function allen () {
-c.style.transform = 'translate3d( {x}px, 3px, 0) ' ;
+x++
+y++
 console.log(c.style.transform)
+c.style.transform = `translate3d( ${x}px, ${y}px, 0)` ;
+console.log(grave)
 }
