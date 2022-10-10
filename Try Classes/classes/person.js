@@ -14,6 +14,7 @@ class person {
     this.hunger = 100
     this.targetfood = 0
     this.status = "alive" //alive or died
+    this.fish = document.getElementById("fish")
     
     
     
@@ -27,17 +28,14 @@ class person {
   
   draw () {
   if(this.status == "alive"){
-    ctx.beginPath()
-    ctx.rect(this.posX, this.posY, this.sizeX, this.sizeY)
-    ctx.stroke()
+    
+    ctx.drawImage(this.fish, this.posX, this.posY, this.sizeX, this.sizeY)
+    console.log(Math.tan(this.targetPlaceY/this.targetPlaceX)/0.0175 + "angle")
     
     if (this.ActionStatus == "move"){
-      ctx.fillStyle = "red"
-      ctx.fill()
+    
       
     } else {
-      ctx.fillStyle = "black"
-      ctx.fill()
       this.idleORmove()
       
     }
@@ -72,6 +70,7 @@ class person {
     }
     
   move () {
+    
     if (this.ActionStatus == "move")
     if (this.x != this.targetPlaceX) {
      if (this.posX < this.targetPlaceX) {

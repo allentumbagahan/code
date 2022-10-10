@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draw Image in Canvas</title>
+    <style>
+        #canvas {
+            border: 5px solid gray;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<img id="image" src="./img/dirt.png" alt="dirt">
+<canvas id="canvas" onclick="put(event)" ></canvas>
+
+    <script>
+        var id = "canvas"
+        var c = document.getElementById(`${id}`)
+        var ctx = c.getContext("2d")
+        id = "image"
+        var image1 = document.getElementById(`${id}`)
+        ctx.drawImage(image1, 50,50)
+        function put(event){
+            id = "image"
+        var image1 = document.getElementById(`${id}`)
+        ctx.drawImage(image1, (Math.abs(event.clientX) - 20), (Math.abs(event.clientY) - 52))
+        ctx.drawImage(image1, 0, 0)
+        console.log(event.clientX + " and " + event.clientY)
+        }
+    
+    </script>
+</body>
+</html>

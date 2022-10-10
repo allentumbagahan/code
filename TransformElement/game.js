@@ -8,6 +8,6 @@ function allen () {
 x++
 y++
 console.log(c.style.transform)
-c.style.transform = `translate3d( ${x}px, ${y}px, 0)` ;
+c.style.transform = `translate3d( ${x}px, ${y}px, 0)` ; // use backtick character "``"
 console.log(grave)
 }
