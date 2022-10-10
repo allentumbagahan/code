@@ -1,11 +1,9 @@
 #canvas {
-    border: 5px solid gray;
-    position: absolute;
-    width: 99.63%;
-    height: 99.3%;
+    border: 5px solid gray; 
     top: 0;
     left: 0;
 }
 html, body {
-    overflow: hidden;
+  margin: 0px;
+  overflow: hidden;
 }

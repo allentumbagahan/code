@@ -8,8 +8,10 @@
     <title>Aquarium</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <canvas id="canvas"></canvas>
+<body onresize="NewSizeScreen()">
+    <canvas id="canvas" onclick="clickFunction(event)"></canvas>
+   <script src="./classes/fish.js"></script>
    <script src="game.js"></script>
+    
 </body>
 </html>
