@@ -2,10 +2,11 @@ c = document.getElementById('canvas')
 ctx = c.getContext('2d')
 c.height = (document.documentElement.clientHeight - 10)
 c.width = (document.documentElement.clientWidth - 10)
+console.log(document.documentElement.clientWidth)
 
 function NewSizeScreen () {
-  c.height = (document.documentElement.clientHeight - 4)
-  c.width = (document.documentElement.clientWidth - 4)
+  c.height = (document.documentElement.clientHeight - 10)
+  c.width = (document.documentElement.clientWidth - 10)
 }
 
 
@@ -31,5 +32,5 @@ animate()
 function clickFunction(event) {
    clickPosX = event.clientX
    clickPosY = event.clientY
-   aquarium.push(new fish(clickPosX, clickPosY, 100))
+   aquarium.push(new fish(clickPosX, clickPosY, 0.035*document.documentElement.clientWidth))
 }
