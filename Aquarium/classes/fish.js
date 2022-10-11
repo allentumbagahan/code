@@ -1,3 +1,8 @@
+// use $ as canvas element
+// use ctx for canvas 2d context
+//use this class like this : array.push(new fish(x, y, sizeArea))
+// animate the for each functions: fish.draw(), fish.rotate()
+
 
 
 elem1 = document.createElement("img")
@@ -16,8 +21,25 @@ elem4 = document.createElement("img")
 elem4.setAttribute("src", "./img/fishflipYX.png")
 elem4.setAttribute("id", "image")
 
+elem5 = document.createElement("img")
+elem5.setAttribute("src", "./img/fish2.png")
+elem5.setAttribute("id", "image")
+
+elem6 = document.createElement("img")
+elem6.setAttribute("src", "./img/fish2flipX.png")
+elem6.setAttribute("id", "image")
+
+elem7 = document.createElement("img")
+elem7.setAttribute("src", "./img/fish2flipY.png")
+elem7.setAttribute("id", "image")
+
+elem8 = document.createElement("img")
+elem8.setAttribute("src", "./img/fish2flipYX.png")
+elem8.setAttribute("id", "image")
+
+
 class fish {
-  constructor(x, y, sizeArea) {
+  constructor(x, y, sizeArea, image1, image2, image3, image4) {
     this.x = x
     this.y = y
     this.sizeX = (sizeArea/2)
@@ -29,6 +51,10 @@ class fish {
     this.targetY = 0
     this.status = "alive" //"alive" or "died"
     this.action = "idle" // "idle" or "moving"
+    this.image1 = image1
+    this.image2 = image2
+    this.image3 = image3
+    this.image4 = image4
     
   }
   draw() { 
@@ -71,21 +97,21 @@ class fish {
     }
     switch (num) {
       case 1 :
-        ctx.drawImage(elem1, 0 - this.sizeX/2,0 - this.sizeY/2, this.sizeX, this.sizeY)
+        ctx.drawImage(this.image1, 0 - this.sizeX/2,0 - this.sizeY/2, this.sizeX, this.sizeY)
         console.log("image1")
         break;
       case 2 :
-        ctx.drawImage(elem2, 0 - this.sizeX/2,0 - this.sizeY/2, this.sizeX, this.sizeY)
+        ctx.drawImage(this.image2, 0 - this.sizeX/2,0 - this.sizeY/2, this.sizeX, this.sizeY)
         console.log("image2")
         break;
 
       case 3 :
-        ctx.drawImage(elem3, 0 - this.sizeX/2,0 - this.sizeY/2, this.sizeX, this.sizeY)
+        ctx.drawImage(this.image3, 0 - this.sizeX/2,0 - this.sizeY/2, this.sizeX, this.sizeY)
         console.log("image3")
         break;
 
       case 4 :
-        ctx.drawImage(elem4, 0 - this.sizeX/2,0 - this.sizeY/2, this.sizeX, this.sizeY)
+        ctx.drawImage(this.image4, 0 - this.sizeX/2,0 - this.sizeY/2, this.sizeX, this.sizeY)
         console.log("image4")
         break;
       
@@ -109,15 +135,19 @@ class fish {
     this.angle = Math.atan2((this.targetY - this.centerY), (this.targetX - this.centerX)) * (180/Math.PI)
     if (this.angle > 90 && this.angle < 130) {
       this.angle += 40
+      this.findTarget()
     }
     if (this.angle < 90 && this.angle > 50) {
       this.angle -= 40
+      this.findTarget()
     }
     if (this.angle < -90 && this.angle > -130) {
       this.angle -= 40
+      this.findTarget()
     }
     if (this.angle > -90 && this.angle < -50) {
       this.angle += 40
+      this.findTarget()
     }
 
   }
@@ -147,8 +177,13 @@ class fish {
   findTarget(){
     
     if (this.action == "idle") {
-      this.targetX = (Math.random() * (c.width - this.sizeX)) + this.sizeX
-      this.targetY = (Math.random() * (c.height - this.sizeX)) + this.sizeY
+      this.targetX = (Math.random() * ($.width - this.sizeX)) + this.sizeX
+      this.targetY = (Math.random() * ($.height - this.sizeX)) + this.sizeY
+      this.action = "moving"
+    }
+    if (this.targetX < this.targetY ) {
+      this.targetX = (Math.random() * ($.width - this.sizeX)) + this.sizeX
+      this.targetY = (Math.random() * ($.height - this.sizeX)) + this.sizeY
       this.action = "moving"
     }
   

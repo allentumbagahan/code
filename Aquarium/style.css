@@ -7,3 +7,33 @@ html, body {
   margin: 0px;
   overflow: hidden;
 }
+
+.button {
+  height: 150px;
+  width: 105px;
+  background-color: aqua;
+  background-image: url(./img/fish-slot.png);
+  background-size: cover;
+  margin-top: 100;
+  border-radius: 15px;
+
+  
+}
+
+.name {
+  background-color: aquamarine;
+  padding: 10px;
+  width: 100%;
+  border: 5px solid black;
+  align-items: baseline;
+
+}
+
+.slot {
+  width: 0px;
+}
+
+#slots {
+  width: fit-content;
+  position:absolute;
+}
