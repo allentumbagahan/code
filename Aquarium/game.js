@@ -25,7 +25,7 @@ function animate () {
     
   })
   requestAnimationFrame(animate)
-}
+} 
 animate()
 
 
@@ -33,8 +33,8 @@ function clickFunction(event) {
    clickPosX = event.clientX
    clickPosY = event.clientY
    if (document.documentElement.clientWidth > document.documentElement.clientHeight) {
-   aquarium.push(new fish(clickPosX, clickPosY, 0.035*document.documentElement.clientWidth))
+   aquarium.push(new fish(clickPosX, clickPosY, 0.035*(document.documentElement.clientWidth + (2880 - document.documentElement.clientWidth))))
    }else {
-    aquarium.push(new fish(clickPosX, clickPosY, 0.035*document.documentElement.clientHeight))
+    aquarium.push(new fish(clickPosX, clickPosY, 0.035*(document.documentElement.clientWidth + (2880 - document.documentElement.clientWidth))))
    }
 }
