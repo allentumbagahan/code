@@ -2,7 +2,9 @@
 // use ctx for canvas 2d context
 //use this class like this : array.push(new fish(x, y, sizeArea))
 // animate the for each functions: fish.draw(), fish.rotate()
-
+bg1 = document.createElement("img")
+bg1.setAttribute("src", "./img/Aquarium1.png")
+bg1.setAttribute("id", "image")
 
 
 elem1 = document.createElement("img")
@@ -178,12 +180,12 @@ class fish {
     
     if (this.action == "idle") {
       this.targetX = (Math.random() * ($.width - this.sizeX)) + this.sizeX
-      this.targetY = (Math.random() * ($.height - this.sizeX)) + this.sizeY
+      this.targetY = (Math.random() * ($.height - this.sizeY - 380)) + this.sizeY + 200
       this.action = "moving"
     }
     if (this.targetX < this.targetY ) {
       this.targetX = (Math.random() * ($.width - this.sizeX)) + this.sizeX
-      this.targetY = (Math.random() * ($.height - this.sizeX)) + this.sizeY
+      this.targetY = (Math.random() * ($.height - 380)) + this.sizeY + 200
       this.action = "moving"
     }
   

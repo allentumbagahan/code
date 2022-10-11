@@ -6,6 +6,8 @@
 html, body {
   margin: 0px;
   overflow: hidden;
+  background-image: url(./img/Aquarium1.png);
+  background-size: 100%;
 }
 
 .button {
@@ -14,8 +16,8 @@ html, body {
   background-color: aqua;
   background-image: url(./img/fish-slot.png);
   background-size: cover;
-  margin-top: 100;
   border-radius: 15px;
+  float: left;
 
   
 }
@@ -25,15 +27,6 @@ html, body {
   padding: 10px;
   width: 100%;
   border: 5px solid black;
-  align-items: baseline;
 
 }
 
-.slot {
-  width: 0px;
-}
-
-#slots {
-  width: fit-content;
-  position:absolute;
-}
