@@ -26,6 +26,14 @@
       value="#AxhLDHagit9exL1ZuADKjzDFpe5G9vJJfjRyxtY7VELbNRJ954Up1VfwL1qrEWXu8f2EeLvKmJ9AB8xqAsntGS1BV42gRS298vjCHBQ2hnZi2faLW7bVgzSWQRtX65fJZ"
     />
     <button id="send_decode">Send</button>
+
+
+
+
+
+
+
+    
     <h3>Encode memo</h3>
     <input
       type="text"
@@ -83,12 +91,15 @@
     <input type="number" placeholder="weight" id="vote_weight" value="100" />
     <input type="text" placeholder="permlink" id="vote_rpc" value="" />
     <button id="send_vote">Send</button>
-    <h3>Custom_JSON</h3>
+
+
+
+    <h3>Custom_JSON TRANSFER HKWATER </h3>
     <input
       type="text"
       placeholder="message"
       id="custom_message"
-      value="Test message"
+      value="Transfer (HKWATER)"
     />
     <input
       type="text"
@@ -97,18 +108,32 @@
       value="stoodkev"
     />
     <select id="custom_method">
-      <option>Posting</option>
       <option>Active</option>
+      <option>Posting</option>
     </select>
-    <input type="text" placeholder="id" id="custom_id" value="custom" />
+    <input type="text" placeholder="id" id="custom_id" value="ssc-mainnet-hive" />
     <input
       type="text"
       placeholder="custom_json"
       id="custom_json"
-      value='{"hive":"keychain"}'
+      value='{"contractName": "tokens",
+      "contractAction": "transfer",
+      "contractPayload": {
+        "symbol": "HKWATER",
+        "to": "allen11111",
+        "quantity": "40",
+        "memo": "1"
+    }
+  }'
     />
     <input type="text" placeholder="rpc" id="custom_rpc" />
     <button id="send_custom">Send</button>
+
+
+
+
+
+
     <h3>Transfer</h3>
     <input
       type="text"
