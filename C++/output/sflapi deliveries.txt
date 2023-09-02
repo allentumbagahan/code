@@ -1,0 +1,8 @@
+{"sessionId":"0x52443ba8fcf24fa6a79be46c93ab65213e10f617a7d3c62c945d251a6b337c69","actions":[{"type":"order.delivered","id":"1cb315","createdAt":"2023-06-03T16:12:36.519Z"}],"clientVersion":"2023-05-30T00:13","cachedKey":"eyJmYXJtSWQiOjE0OTEwOSwibG9nZ2VkSW5BdCI6MTY4NTgwODQyMDI1OSwiYWNjb3VudCI6IjB4NTM1NjA3NzVkREVFM2U0MDkwNTFCRTY5MzZjOTc1ODcwOTY3NTI4OSJ9","deviceTrackerId":"d59kfk"}
+
+
+//planting
+"actions":[{"type":"seed.planted","index":"b84acfe6","item":"Pumpkin Seed","cropId":"0f60c03e","createdAt":"2023-06-03T16:56:33.293Z"}]
+
+//digging tres.
+"actions":[{"type":"treasure.dug","id":37,"createdAt":"2023-06-03T16:57:09.191Z"}]

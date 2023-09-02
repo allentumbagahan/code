@@ -1,0 +1,1 @@
+g++ Sunflowerland-Bot.cpp -o sflBot.exe -lcurl -ljsoncpp

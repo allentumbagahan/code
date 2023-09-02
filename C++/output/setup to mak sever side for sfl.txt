@@ -1,0 +1,2 @@
+visit acc and geting sessionId & bumpkinUri : https://api.sunflower-land.com/visit/(landId)
+load session (get device tracker id) : https://api.sunflower-land.com/session/(landId)

@@ -1,0 +1,32 @@
+                          , Ct = await getOnChainState({
+                            farmAddress: dt.farmAddress,
+                            account: wallet.myAccount,
+                            id: St
+                        })
+
+
+
+async function getOnChainState({farmAddress: _e, account: lt, id: dt}) {
+    const At = sflBalanceOf(wallet.web3Provider, _e)
+      , Rt = getInventoryBalances(wallet.web3Provider, _e)
+      , St = getFarm(wallet.web3Provider, dt)
+      , Ct = loadBumpkins(wallet.web3Provider, lt)
+      , Ht = getMintedAtBatch(wallet.web3Provider, dt, RECIPES_IDS)
+      , [vt,Bt,Ut,wt,Et] = await Promise.all([At, Rt, St, Ht, Ct])
+      , Mt = wt.reduce((kt,Nt,Dt)=>({
+        ...kt,
+        [KNOWN_ITEMS[RECIPES_IDS[Dt]]]: Number(Nt)
+    }), {})
+      , Tt = balancesToInventory(Bt);
+    return {
+        game: {
+            ...EMPTY,
+            balance: new Decimal$1(lib$b.fromWei(vt)),
+            farmAddress: _e,
+            inventory: Tt
+        },
+        owner: Ut.owner,
+        mintedAtTimes: Mt,
+        bumpkin: Et[0]
+    }
+}

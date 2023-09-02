@@ -1,3 +1,5 @@
+import threading
+
 i = input()
 B = [i]  # change this as array
 
@@ -22,13 +24,13 @@ def main(p2):
         if B != 0:
             b = int(p2)
             a = False
-            MoreFunctions.SetupChrome(C, A, Alias1[b - 1], b)
+            task0b = threading.Thread(target=MoreFunctions.SetupChrome, args=(C, A, Alias1[b - 1], b))
             task0 = threading.Thread(target=MoreFunctions.launchURL, args=(E, F))
             task1 = threading.Thread(target=MoreFunctions.ConnectMetamask, args=(p,))
+            task0b.start()
+            task0b.join()
             task0.start()
-            task0.join()
             task1.start()
-            task1.join()
             print("next")
             MoreFunctions.launchURL(D, F)
             time.sleep(2)

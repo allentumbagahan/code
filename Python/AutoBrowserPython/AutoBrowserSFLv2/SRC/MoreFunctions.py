@@ -2,7 +2,6 @@ import undetected_chromedriver as uc
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 import time
-import os
 import pyautogui
 import random
 
@@ -37,23 +36,21 @@ go = False
 
 def SetupChrome(WINDOW_SIZE, UserDataDirectory, ProfileNumAlias, ProfileNum):
     global PN
+    global browser
     PN = ProfileNum
     # open new chrome tab with new session CODE BELOW: (WORKING)
-    os.system("taskkill /im chrome.exe /f")
     op = uc.ChromeOptions()
-    op.add_argument(
-        "--window-size=%s" % WINDOW_SIZE)
     op.add_argument(
         f"--user-data-dir={UserDataDirectory}")
     op.add_argument(
         f"--profile-directory=Profile {ProfileNumAlias}")
     # create new chrome tab with load chrome profile dir
-    global browser
     browser = uc.Chrome(options=op)
 
 
 def launchURL(url, Scale):
     global browser
+    print(browser)
     if browser != "":
         print(browser)
         browser.get(url)
@@ -284,6 +281,7 @@ def GetSFLData2():
 
 def InputLog():
     global R
+    global browser
     while not R:
         i = input('command type HELP for cmd list : ')
         st0 = i == "refresh plots v1" or i == 'rp1' or i == 'plots' or i == 'planted'
@@ -319,9 +317,11 @@ def InputLog():
                 GetSFLData2()
         # get balance
         if st4:
-            CountDown("refreshing data balance.... ", 3, "sec/s", "done")
-            ca1 = browser.find_element(By.TAG_NAME, "small")
-            print('SFL BALANCE : ', ca1.get_attribute('innerHTML'))
+            for x in browser.window_handles:
+                browser.switch_to.window(browser.window_handles[x])
+                CountDown("refreshing data balance.... ", 3, "sec/s", "done")
+                ca1 = browser.find_element(By.TAG_NAME, "small")
+                print('SFL BALANCE : ', ca1.get_attribute('innerHTML'))
 
             # for plot refreshing data ready harvest
         if st5:

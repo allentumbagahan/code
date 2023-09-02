@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+</head>
+<body>
+  <script>
+//working signing 
+const address = ethereum.selectedAddress;
+
+function generateSignatureMessage(dt, At) {
+  return `\u{1F33B} Welcome to Sunflower Land! \u{1F33B}
+
+Click to sign in and accept the Sunflower Land
+\u{1F4DC} Terms of Service:
+https://docs.sunflower-land.com/support/terms-of-service
+
+This request will not trigger a blockchain
+transaction or cost any gas fees.
+
+Your authentication status will reset after
+each session.
+
+\u{1F45B} Wallet address:
+${dt.substring(0, 19)}...${dt.substring(24)}
+
+\u{1F511} Nonce: ${At}`;
+}
+
+// Convert the token to a hex string
+const hexToken = generateSignatureMessage(address, 19527);
+
+// Sign the token using personal_sign
+async function signTokenWithPersonalSign() {
+  try {
+    const signature = await ethereum.request({
+      method: 'personal_sign',
+      params: [hexToken, address],
+    });
+    console.log('Signature:', signature);
+  } catch (error) {
+    console.error('Failed to sign token:', error);
+  }
+}
+
+signTokenWithPersonalSign();
+  </script>
+</body>
+</html>

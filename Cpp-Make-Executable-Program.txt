@@ -1,0 +1,9 @@
+in MINGW64 or MINGW64 in vs studio
+make sure your cpp file in the directory you are in
+commnad : //create executable file for your cpp
+g++ filename.cpp -o your_programName.exe -lcurl
+
+command : //open your executable file
+./your_programName.exe
+
+

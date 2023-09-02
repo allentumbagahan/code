@@ -1,0 +1,11 @@
+Step 1 : Post, Request Url : "https://api.sunflower-land.com/session/55864"
+Expected Response deviceTrackerId, farm Info
+Sample payload/body :
+{"sessionId":"0x1d777e79d3730d9c37e7b22714af088dfa4e280da4a884eeb27cb92c5c2778ce","bumpkinTokenUri":"https://api.sunflower-land.com/bumpkins/metadata/38851_v1_48_1_42_15_20_34_44","clientVersion":"2023-05-30T00:13","wallet":"METAMASK"}
+
+
+
+for auth bearer gen:
+https://firebaseinstallations.googleapis.com/v1/projects/sunflower-land/installations/fq2WQJyoJpAa1a_MVUF7SR/authTokens:generate
+sample payload :
+{"installation":{"sdkVersion":"w:0.6.4","appId":"1:1061537811936:web:4357cbb765c9c990f66f85"}}

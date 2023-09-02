@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>The iframe element</h1>
+
+<iframe src="https://api.sunflower-land.com/auth/verify?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGRyZXNzIjoiMHhkNjgzOGU4RGU0MDI1OEIyNjM5MzQ0NGI4NTBFYUI0ODM1RDVFMTcwIiwidXNlckFjY2VzcyI6eyJzeW5jIjp0cnVlLCJ3aXRoZHJhdyI6dHJ1ZSwibWludENvbGxlY3RpYmxlIjp0cnVlLCJjcmVhdGVGYXJtIjp0cnVlfSwiaWF0IjoxNjkzMDUwMDc0LCJleHAiOjE2OTU2NDIwNzR9.cv0ld1QSX65mnDphB3qSqbJS1ojstP0biKcodQSK_RY" title="W3Schools Free Online Web Tutorials" id="iframe"></iframe>
+
+<script>
+    const iframeElement = document.getElementById("iframe");
+    const iframeWindow = iframeElement.contentWindow;
+    console.log(iframeWindow);
+
+// Now you can interact with the iframe's content window
+// For example, you can access its document and manipulate the content
+const iframeDocument = iframeWindow.document;
+</script>
+</body>
+</html>

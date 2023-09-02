@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <iframe id="iframe" src="https://api.sunflower-land.com/auth/verify?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGRyZXNzIjoiMHhmYTg4OTY2RDc0NjY3OTdFZkVjMmQ2M0VlZTc5Njc1NkRjYjMxMDc5IiwidXNlckFjY2VzcyI6eyJzeW5jIjp0cnVlLCJ3aXRoZHJhdyI6dHJ1ZSwibWludENvbGxlY3RpYmxlIjp0cnVlLCJjcmVhdGVGYXJtIjp0cnVlfSwiaWF0IjoxNjg3MTgzMDQ1LCJleHAiOjE2ODk3NzUwNDV9.7xrfPQ_0PVrkGphl6-3kWGdiMWrdmGzR2girsYe9glM" title="Yeeeet!" id="iframe"></iframe>
+    <script>
+        //d2 is verified token and d1 is the raw token
+        var d2 = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGRyZXNzIjoiMHhmYTg4OTY2RDc0NjY3OTdFZkVjMmQ2M0VlZTc5Njc1NkRjYjMxMDc5IiwidXNlckFjY2VzcyI6eyJzeW5jIjp0cnVlLCJ3aXRoZHJhdyI6dHJ1ZSwibWludENvbGxlY3RpYmxlIjp0cnVlLCJjcmVhdGVGYXJtIjp0cnVlLCJ2ZXJpZmllZCI6dHJ1ZX0sImlhdCI6MTY4NzE4NTk3NywiZXhwIjoxNjg3MTg1OTc3fQ.gKvPCws4uLDzxs5MgmC_Ap1A3kXpoIrlW62GmRr6wbk"
+        var d1 = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGRyZXNzIjoiMHhmYTg4OTY2RDc0NjY3OTdFZkVjMmQ2M0VlZTc5Njc1NkRjYjMxMDc5IiwidXNlckFjY2VzcyI6eyJzeW5jIjp0cnVlLCJ3aXRoZHJhdyI6dHJ1ZSwibWludENvbGxlY3RpYmxlIjp0cnVlLCJjcmVhdGVGYXJtIjp0cnVlLCJ2ZXJpZmllZCI6dHJ1ZX0sImlhdCI6MTY4NzE4NjUzNywiZXhwIjoxNjg5Nzc4NTM3fQ.gzSvE4eoAGCc9kOnMKxRj2OOtjhYPx__m4jGGvWdXDI"
+        function decode(lt){
+            a = lt.split(".")[1]
+            b = a.replace(/-/g, "+").replace(/_/g, "/")
+            switch (b.length % 4) {
+                case 0:
+                    break;
+                case 2:
+                    b += "==";
+                    break;
+                case 3:
+                    b += "=";
+                    break;
+                default:
+                    throw "Illegal base64url string!"
+                }
+                c = String(b).replace(/=+$/, "")
+                for (var At, vt, Bt = 0, Rt = 0, Tt = ""; vt = c.charAt(Rt++); ~vt && (At = Bt % 4 ? 64 * At + vt : vt,
+                Bt++ % 4) ? Tt += String.fromCharCode(255 & At >> (-2 * Bt & 6)) : 0)
+                    vt = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=".indexOf(vt);
+                console.log(Tt)//data
+        }
+        function encode() {
+            const inputData = {
+                address: "0xfa88966D7466797EfEc2d63Eee796756Dcb31079",
+                userAccess: {
+                  sync: true,
+                  withdraw: true,
+                  mintCollectible: true,
+                  createFarm: true,
+                  verified: true
+                },
+                iat: 1687186537,
+                exp: 1689778537
+              };
+              
+              // Step 1: Convert JSON object to a string
+              const jsonString = JSON.stringify(inputData);
+              
+              // Step 2: Encode the string to base64
+              const base64String = btoa(jsonString);
+              
+              // Step 3: Replace characters to make it base64url-encoded
+              const base64urlString = base64String.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+              
+              console.log(base64urlString);
+          }
+        decode(d1);
+        decode(d2);
+        encode()
+        const payload = {
+            address: '0xeb22E20A61ef23310597ed8fF958d4579966Aff2',
+            userAccess: {
+              sync: true,
+              withdraw: true,
+              mintCollectible: true,
+              createFarm: true,
+              verified: true
+            },
+            iat: 1687181430,
+            exp: 1689773430
+          };
+    </script>
+</body>
+</html>

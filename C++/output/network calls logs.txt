@@ -1,0 +1,6 @@
+chrome.webRequest.onCompleted.addListener(function(oCompleted) {
+            var sCompleted = JSON.stringify(oCompleted);
+            aNetworkLog.push(sCompleted);
+        }
+        ,{urls: ["http://*/*"]}
+ );
